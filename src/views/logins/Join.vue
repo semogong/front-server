@@ -2,7 +2,7 @@
     <div class="row w-100 h-100">
         <div class="m-auto align-self-center w-25" style="height: 60%;">
             <div class="w-100 mb-4">
-                <a href="/login"><img :src="require('@/assets/logo.png')" class="w-100"></a>
+                <a href="/login"><img :src="require('@/assets/images/logo.png')" class="w-100"></a>
             </div>
 
             <div class="w-100">

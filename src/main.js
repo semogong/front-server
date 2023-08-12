@@ -4,12 +4,14 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {createRouter,createWebHistory} from 'vue-router'
 
-import Login from "@/views/Login.vue"
-import Join from "@/views/Join.vue"
-import Auth from "@/views/Auth.vue";
-import socialJoin from "@/views/socialJoin.vue";
-import findID from "@/views/findID.vue";
-import findPW from "@/views/findPW.vue";
+import Login from "@/views/logins/Login.vue"
+import Join from "@/views/logins/Join.vue"
+import Auth from "@/views/logins/Auth.vue";
+import socialJoin from "@/views/logins/socialJoin.vue";
+import findID from "@/views/logins/findID.vue";
+import findPW from "@/views/logins/findPW.vue";
+import Main from "@/views/mains/Main.vue";
+import Notify from "@/views/mains/Notify.vue";
 
 
 const routes = [
@@ -42,7 +44,42 @@ const routes = [
         path:'/find-pw',
         name: 'find-pw',
         component:findPW
+    },
+    {
+        path:'/main',
+        name: 'main',
+        component:Main
+    },
+    {
+        path:'/notify',
+        name: 'notify',
+        component:Notify
     }
+    // {
+    //     path:'/search',
+    //     name: 'search',
+    //     component:Search
+    // },
+    // {
+    //     path:'/group',
+    //     name: 'group',
+    //     component:Group
+    // },
+    // {
+    //     path:'/chat',
+    //     name: 'chat',
+    //     component:Chat
+    // },
+    // {
+    //     path:'/star',
+    //     name: 'star',
+    //     component:Star
+    // },
+    // {
+    //     path:'/rank',
+    //     name: 'rank',
+    //     component:Rank
+    // }
 
 ]
 

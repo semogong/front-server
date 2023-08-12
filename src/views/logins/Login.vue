@@ -2,7 +2,7 @@
     <div class="row w-100 h-100">
         <div class="m-auto align-self-center w-25" style="height: 60%;">
             <div class="w-100 mb-4">
-                <a href="/login"><img :src="require('@/assets/logo.png')" class="w-100"></a>
+                <a href="/login"><img :src="require('@/assets/images/logo.png')" class="w-100"></a>
             </div>
 
             <div class="w-100">
@@ -40,9 +40,9 @@
             </div>
 
             <div class="d-sm-flex my-5 m-auto w-100">
-                <div class="m-auto w-25"><a @click="$router.push('/social-join')"><img :src="require('@/assets/btnG_축약형.png')" class="w-100"></a></div>
-                <div class="m-auto w-25"><a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"><img :src="require('@/assets/btnG_축약형.png')" class="w-100"></a></div>
-                <div class="m-auto w-25"><a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"><img :src="require('@/assets/btnG_축약형.png')" class="w-100"></a></div>
+                <div class="m-auto w-25"><a @click="$router.push('/social-join')"><img :src="require('@/assets/images/btnG_축약형.png')" class="w-100"></a></div>
+                <div class="m-auto w-25"><a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"><img :src="require('@/assets/images/btnG_축약형.png')" class="w-100"></a></div>
+                <div class="m-auto w-25"><a href="https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/"><img :src="require('@/assets/images/btnG_축약형.png')" class="w-100"></a></div>
             </div>
         </div>
     </div>
