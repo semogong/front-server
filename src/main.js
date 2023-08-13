@@ -12,6 +12,11 @@ import findID from "@/views/logins/findID.vue";
 import findPW from "@/views/logins/findPW.vue";
 import Main from "@/views/mains/Main.vue";
 import Notify from "@/views/mains/Notify.vue";
+import Search from "@/views/mains/Search.vue";
+import Group from "@/views/mains/Group.vue";
+import Chat from "@/views/mains/Chat.vue";
+import Star from "@/views/mains/Star.vue";
+import Rank from "@/views/mains/Rank.vue";
 
 
 const routes = [
@@ -54,32 +59,32 @@ const routes = [
         path:'/notify',
         name: 'notify',
         component:Notify
+    },
+    {
+        path:'/search',
+        name: 'search',
+        component:Search
+    },
+    {
+        path:'/group',
+        name: 'group',
+        component:Group
+    },
+    {
+        path:'/chat',
+        name: 'chat',
+        component:Chat
+    },
+    {
+        path:'/star',
+        name: 'star',
+        component:Star
+    },
+    {
+        path:'/rank',
+        name: 'rank',
+        component:Rank
     }
-    // {
-    //     path:'/search',
-    //     name: 'search',
-    //     component:Search
-    // },
-    // {
-    //     path:'/group',
-    //     name: 'group',
-    //     component:Group
-    // },
-    // {
-    //     path:'/chat',
-    //     name: 'chat',
-    //     component:Chat
-    // },
-    // {
-    //     path:'/star',
-    //     name: 'star',
-    //     component:Star
-    // },
-    // {
-    //     path:'/rank',
-    //     name: 'rank',
-    //     component:Rank
-    // }
 
 ]
 

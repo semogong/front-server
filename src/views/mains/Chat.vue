@@ -13,7 +13,7 @@
 
                 <div class="text-center">
                     <router-link to="/notify" class="d-sm-flex justify-content-center align-items-center zoom" style="color:white">
-                        <img :src="require('@/assets/images/notification_fill.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <img :src="require('@/assets/images/notification.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">알림</div></transition>
                     </router-link>
                 </div>
@@ -34,7 +34,7 @@
 
                 <div class="text-center">
                     <router-link to="/chat" class="d-sm-flex justify-content-center align-items-center zoom" style="color:white">
-                        <img :src="require('@/assets/images/chat.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <img :src="require('@/assets/images/chat_fill.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">채팅</div></transition>
                     </router-link>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="w-100 vh10 text-center fs-2 fw-bolder">
-                알림
+                채팅
             </div>
             <div class="w-100 vh20" style="background-color: #B5B5B5">아</div>
             <div class="w-100 vh20" style="background-color: lightgray">아</div>
@@ -253,7 +253,7 @@
 
 <script>
 export default {
-    name: 'Notify',
+    name: 'Chat',
     data() {
         return {
             show: 0
