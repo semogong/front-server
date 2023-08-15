@@ -1,5 +1,7 @@
 <template>
-    <router-view/>
+    <div>
+        <router-view/>
+    </div>
 </template>
 
 
@@ -164,9 +166,30 @@ export default {
     background: #E3E3E3  /*스크롤바 뒷 배경 색상*/
 }
 
-html{
-    font-size: 14px;
+
+@media all and (min-width:1920px) and (max-width:2560px) {
+    html{
+        font-size: 14px;
+    }
 }
+@media all and (min-width:1600px) and (max-width:1919px) {
+    html{
+        font-size: 12px;
+    }
+}
+/* 모바일 가로 & 테블릿 세로 (해상도 480px ~ 767px)*/
+@media all and (min-width:1366px) and (max-width:1599px) {
+    html{
+        font-size: 10px;
+    }
+}
+/* 모바일 세로 (해상도 ~ 479px)*/
+@media all and (max-width:1365px) {
+    html{
+        font-size: 8px;
+    }
+}
+
 
 
 
