@@ -1,6 +1,4 @@
 <template>
-
-
     <div class="row w-100 h-100">
         <div class="m-auto align-self-center w-25" style="height: 60%;">
 

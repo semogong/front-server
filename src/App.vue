@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <router-view/>
-    </div>
+
+  <router-view/>
+
 </template>
 
 
@@ -164,6 +164,16 @@ export default {
 
 .scroll::-webkit-scrollbar-track {
     background: #E3E3E3  /*스크롤바 뒷 배경 색상*/
+}
+
+
+.hidden_scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hidden_scroll {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
 }
 
 

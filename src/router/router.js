@@ -13,6 +13,7 @@ import Chat from "@/views/mains/Chat.vue";
 import Star from "@/views/mains/Star.vue";
 import Rank from "@/views/mains/Rank.vue";
 import Post from "@/views/posts/Post.vue";
+import EditPost from "@/views/posts/EditPost.vue";
 
 const routes = [
     // 라우트 설정
@@ -47,7 +48,7 @@ const routes = [
         component:findPW
     },
     {
-        path:'/',
+        path:'/main',
         name: 'main',
         component:Main
     },
@@ -85,7 +86,12 @@ const routes = [
         path:'/post',
         name: 'post',
         component:Post
-    }
+    },
+    {
+        path:'/edit-post',
+        name: 'edit-post',
+        component:EditPost
+    },
 
 ];
 

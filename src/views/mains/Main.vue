@@ -213,7 +213,6 @@ export default {
     },
     methods:{
         selectPost(postId){
-            console.log(postId)
             this.$store.dispatch('setSelectedPostId',postId);
         }
     }
