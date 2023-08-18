@@ -1,10 +1,8 @@
 <template>
   <div class="post">
-    <edit-post class="post" v-if="isPostEditViewed" @close-edit-modal="isPostEditViewed=false,isPostContent=true" style="z-index: 5">
+      <edit-post class="post" v-if="isPostEditViewed" @close-edit-modal="isPostEditViewed=false,isPostContent=true" style="z-index: 5"></edit-post>
 
-    </edit-post>
-
-      <div class="overlay" @click="$emit('close-modal')"></div>]
+      <router-link to="/"><div class="overlay" @click="$emit('close-modal')"></div>]</router-link>
 
       <div v-if="isPostContent" class="modal-card d-sm-flex justify-content-center">
 
@@ -20,8 +18,7 @@
                 <div class="mx-2">조회 1</div>
                 <div class="mx-2">추천 1</div>
                 <div class="mx-2 me-5">저장 1</div>
-                <div><button @click="isPostEditViewed=true,isPostContent=false"  style="background-color: white;"><img style="width: 1vw; filter: invert(84%) sepia(1%) saturate(15%) hue-rotate(314deg) brightness(98%) contrast(96%);" :src="require('@/assets/images/list.png')" ></button>
-                </div>
+                <router-link :to="`/post/${this.$route.params.id}/edit`"><button @click="isPostEditViewed=true,isPostContent=false"  style="background-color: white;"><img style="width: 1vw; filter: invert(84%) sepia(1%) saturate(15%) hue-rotate(314deg) brightness(98%) contrast(96%);" :src="require('@/assets/images/list.png')" ></button></router-link>
               </div>
 
             </div>
@@ -87,8 +84,10 @@ export default {
         }
     },
     created() {
-        const idx = this.$store.getters.selectedPostId;
-        const urls = '/api/items/'+idx;
+        // const idx = this.$store.getters.selectedPostId;
+        const router_idx = this.$route.params.id;
+        const urls = '/api/items/'+router_idx;
+        console.log(router_idx);
         axios.get(urls).then((res)=>{
             this.msg = res.data;
         })

@@ -1,220 +1,158 @@
 <template>
 
     <div class="vw100 vh100 d-sm-flex ">
-
         <!-- post -->
-        <transition name="post">
-        <Post class="post" v-if="isPostViewed" @close-modal="isPostViewed=false"></Post>
-        </transition>
+        <transition name="post"><router-view></router-view></transition>
 
         <!-- sidebar -->
-        <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="show=1" @mouseleave="show=0">
+        <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="show=1" @mouseleave="show=0" :class="{sidehover:!isSideViewed}">
             <div class="vh75 row align-self-center justify-content-center mt-5">
                 <div class="text-center">
-                    <router-link to="/main" class="d-sm-flex justify-content-center align-items-center" style="color:white;">
-                        <img :src="require('@/assets/images/home_fill.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert();">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">홈</div></transition>
-                    </router-link>
+                    <div @click="isSideViewed=false,controlSidebr(0)" class="d-sm-flex justify-content-center align-items-center" style="color:white;">
+                        <img :src="imgUrls0[this.isSidebar[0]]"  class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert();">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">홈</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/notify" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/notification.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">알림</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(1)">
+                        <img :src="imgUrls1[this.isSidebar[1]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">알림</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/search" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/search.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">검색</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(2)">
+                        <img :src="imgUrls2[this.isSidebar[2]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">검색</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/group" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/group.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">그룹</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(3)">
+                        <img :src="imgUrls3[this.isSidebar[3]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">그룹</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/chat" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/chat.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">채팅</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(4)">
+                        <img :src="imgUrls4[this.isSidebar[4]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">채팅</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/star" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/star.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">친구</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(5)">
+                        <img :src="imgUrls5[this.isSidebar[5]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">스타</div></transition>
+                    </div>
                 </div>
 
                 <div class="text-center">
-                    <router-link to="/rank" class="d-sm-flex justify-content-center align-items-center" style="color:white">
-                        <img :src="require('@/assets/images/ranking.png')" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce"><div v-if="show==1" class="m-auto pe-3 fs-5">랭킹</div></transition>
-                    </router-link>
+                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(6)">
+                        <img :src="imgUrls6[this.isSidebar[6]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">랭킹</div></transition>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- sidebar detail -->
+        <transition name="sidebar" >
+            <div class="vw25 vh100" style="background-color: #EEEEEE" v-if="isSideViewed==true">
+                <div v-if="isSidebar[1]==1">
+                    <Notify @close-side="isSideViewed=false,controlSidebr(0)"></Notify>
+                </div>
+
+                <div v-if="isSidebar[2]==1">
+                    <Search @close-side="isSideViewed=false,controlSidebr(0)"></Search>
+                </div>
+
+                <div v-if="isSidebar[3]==1">
+                    <Group @close-side="isSideViewed=false,controlSidebr(0)"></Group>
+                </div>
+
+                <div v-if="isSidebar[4]==1">
+                    <Chat @close-side="isSideViewed=false,controlSidebr(0)"></Chat>
+                </div>
+
+                <div v-if="isSidebar[5]==1">
+                    <Star @close-side="isSideViewed=false,controlSidebr(0)"></Star>
+                </div>
+
+                <div v-if="isSidebar[6]==1">
+                    <Rank @close-side="isSideViewed=false,controlSidebr(0)"></Rank>
+                </div>
+            </div>
+        </transition>
+
 
         <!-- mainbar -->
         <div class="vw70 vh100 d-sm-flex justify-content-center mainbar" style="background-color: white">
-            <div class="vw50 vh100 overflow-y-scroll scroll p-3">
+            <div class="vw50 vh100 overflow-y-scroll hidden_scroll p-3">
                 <!-- post -->
-<!--                <router-link to="/post">-->
                 <div v-for="(val,index) in posts" :key="index" class="w-100 d-sm-flex justify-content-center my-4" style="border-radius: 15px;">
-                    <div class="vw50 vh50" style="background-color: #F9F9F9" @click="isPostViewed=true,selectPost(index)">
-                        <div class="header w-100 vh5 d-sm-flex align-items-center ps-4" style="background-color: #012060; border-radius: 10px 10px 0 0">
-                            <div style="width: 2vw"><img :src="require('@/assets/images/profile-user.png')" style="border-radius: 50%; filter: invert(); width: 1.5vw; height: 1.5vw;"></div>
-                            <div class="fw-bold" style="color:white; width: 4vw;">{{ val.editor }}</div>
-                            <div style="color:lightgray; font-size: 1rem; width: 4vw;">{{val.editTime}}</div>
-                        </div>
-
-                        <div class="body vh45 w-100 pe-5" style="border: lightgray 1px solid; border-radius: 0px 0px 10px 10px">
-                            <div class="vh15 w-100 d-sm-flex align-items-center">
-                                <div class="ms-5">
-                                    <div class="fs-1 fw-bold">JAVA + SPRING BOOT</div>
-                                    <div class="fs-3 fw-bold" style="color: gray">Chapter 1: 개요</div>
-                                </div>
-                            </div>
-                            <div class="vh25 w-100">
-                                <div class="ms-5">
-                                    <div class="fs-5">SpringBoot API
-                                        Chapter 3 [API 개발 고급(2)]
-                                        컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)SpringBoot API
-                                        Chapter 3 [API 개발 고급(2)]
-                                        컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)SpringBoot API
-                                        Chapter 3 [API 개발 고급(2)]
-                                        컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)</div>
-                                </div>
-                            </div>
-                            <div class="vh5 w-100">
-                                <div class="ms-5 d-sm-flex justify-content-between">
-                                    <div class="d-sm-flex justify-content-center">
-                                        <div class="mx-1 fw-bold">#Java</div>
-                                        <div class="mx-1 fw-bold">#Spring</div>
-                                        <div class="mx-1 fw-bold">#JPA</div>
-                                    </div>
-                                    <div class="d-sm-flex justify-content-center">
-                                        <div class="mx-1 fw-bold">조회 10</div>
-                                        <div class="mx-1 fw-bold">추천 9</div>
-                                        <div class="mx-1 fw-bold">저장 1</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <router-link :to="`/post/${index}`"><PostPreview @click="isPostViewed=true,selectPost(index)"></PostPreview></router-link>
                 </div>
-<!--                </router-link>-->
             </div>
         </div>
-
 
         <!-- profilebar -->
-        <div class="vw25 vh100 p-5" style="background-color: #EEEEEE">
-            <div class="w-100 vh60 d-sm-flex justify-content-center my-1" style="border:2px solid #B6B6B6; border-radius: 10px;">
-                <div class="w-100">
-                    <div class="w-100 vh5 d-sm-flex justify-content-end align-items-center px-3"><router-link to="/a"><img :src="require('@/assets/images/gear.png')" style="width: 1.5vw; height: 1.5vw;"></router-link></div>
-                    <div class="w-100 vh20 d-sm-flex justify-content-center align-items-center">
-                        <img :src="require('@/assets/images/profile-user.png')" style="border-radius: 50%; width: 8vw; height: 8vw;">
-                    </div>
-                    <div class="w-100 vh5 d-sm-flex justify-content-center align-items-center">
-                        <img :src="require('@/assets/images/medal.png')" style="width: 1.5vw; height: 1.5vw">
-                        <div class="fs-3 fw-bold">노래하는 박정빈</div>
-                    </div>
-                    <div class="vh15 w-100 mx-4 my-4">
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">직무</div>
-                            <div class="w-75 text-center fs-5 fw-bold">백엔드 개발자</div>
-                        </div>
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">관심분야</div>
-                            <div class="w-75 text-center fs-5 fw-bold">Java, Spring, JPA</div>
-                        </div>
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">공부시간</div>
-                            <div class="w-75 text-center fs-5 fw-bold">120시간 50분</div>
-                        </div>
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">공부효율</div>
-                            <div class="w-75 text-center fs-5 fw-bold">74%</div>
-                        </div>
-                    </div>
-                    <div class="w-100 vh10 mt-4 d-sm-flex justify-content-end align-items-center">
-                        <div class="w-100 d-sm-flex justify-content-center">
-                            <button class="m-auto vh5 fs-5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 10px; width: 9vw;">게시글 작성하기</button>
-                            <button class="m-auto vh5 fs-5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 10px; width: 9vw;" >프로필 더보기</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-100 vh30 d-sm-flex justify-content-center my-3" style="border:2px solid #B6B6B6; border-radius: 10px;">
-                <div class="w-100 vh30">
-                    <div class="w-100 d-sm-flex justify-content-center mt-3" style="height: 6vh">
-                        <div class="vw10 h-100 d-sm-flex align-items-center"><div class="fw-bold text-center" style="font-size: 3rem">17:20:20</div></div>
-                        <div class="d-sm-flex justify-content-center w-25">
-                            <div class="m-auto"><button @click="$router.push('/pause')" style="border: 0px;"><img style="width: 1.5vw; height: 1.5vw;" :src="require('@/assets/images/pause.png')"></button></div>
-                            <div class="m-auto"><button @click="$router.push('/stop')" style="border: 0px;"><img style="width: 1.5vw; height: 1.5vw;" :src="require('@/assets/images/stop.png')"></button></div>
-                        </div>
-                    </div>
-                    <div class="vh5 w-100 fw-bold text-center" style="color: #012060">30분뒤 ‘열공’ 상태로 전환됩니다</div>
-                    <div class="vh5 w-100">
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-50 text-center fs-5 fw-bold" style="color: #666666">오늘의 공부시간</div>
-                            <div class="w-50 text-center fs-5 fw-bold">120시간 50분</div>
-                        </div>
-                    </div>
-                    <div class="vh5 w-100">
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-50 text-center fs-5 fw-bold" style="color: #666666">오늘의 공부효율</div>
-                            <div class="w-50 text-center fs-5 fw-bold">74%</div>
-                        </div>
-                    </div>
-                    <div class="vh5 w-100">
-                        <div class="w-100 vh5 d-sm-flex justify-content-center">
-                            <div class="w-50 text-center fs-5 fw-bold" style="color: #666666">오늘 나는</div>
-                            <div class="w-50 text-center fs-5 fw-bold">평균이상</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <Profilevar></Profilevar>
     </div>
-
 </template>
 
-
 <script>
-import Post from "@/views/posts/Post.vue";
+
+
+import Notify from "@/views/mains/Notify.vue";
+import Search from "@/views/mains/Search.vue";
+import Group from "@/views/mains/Group.vue";
+import Chat from "@/views/mains/Chat.vue";
+import Star from "@/views/mains/Star.vue";
+import Rank from "@/views/mains/Rank.vue";
+import Profilevar from "@/views/mains/Profilebar.vue";
+import PostPreview from "@/views/posts/PostPreview.vue";
 
 export default {
 
     name: 'Main',
-    components: {Post},
+    components: {PostPreview, Profilevar, Rank, Star, Chat, Group, Search, Notify},
     data() {
         return {
             show: 0,
             isPostViewed:false,
+            isSideViewed:false,
+            isSidebar:[1,0,0,0,0,0,0],
+            isSidebarFrom:0,
             posts: [
                 { id: 1, title: 'Post 1', editor:'박정빈',editTime:"30분전"},
                 { id: 2, title: 'Post 2', editor:'박승일',editTime:"1시간전"},
                 { id: 3, title: 'Post 3', editor:'이재훈',editTime:"2시간전"},
                 { id: 4, title: 'Post 4', editor:'박정빈',editTime:"30분전"},
                 { id: 5, title: 'Post 5', editor:'박승일',editTime:"1시간전"},
-                { id: 6, title: 'Post 6', editor:'이재훈',editTime:"2시간전"},]
+                { id: 6, title: 'Post 6', editor:'이재훈',editTime:"2시간전"},],
+            imgUrls0:[require('@/assets/images/home.png'),require('@/assets/images/home_fill.png')],
+            imgUrls1:[require('@/assets/images/notification.png'),require('@/assets/images/notification_fill.png')],
+            imgUrls2:[require('@/assets/images/search.png'),require('@/assets/images/search_fill.png')],
+            imgUrls3:[require('@/assets/images/group.png'),require('@/assets/images/group_fill.png')],
+            imgUrls4:[require('@/assets/images/chat.png'),require('@/assets/images/chat_fill.png')],
+            imgUrls5:[require('@/assets/images/star.png'),require('@/assets/images/start_fill.png')],
+            imgUrls6:[require('@/assets/images/ranking.png'),require('@/assets/images/ranking_fill.png')],
+
         };
     },
     methods:{
         selectPost(postId){
             this.$store.dispatch('setSelectedPostId',postId);
-        }
+        },
+        controlSidebr(to){
+            this.isSidebar[this.isSidebarFrom] = 0;
+            this.isSidebar[to] = 1;
+            this.isSidebarFrom = to;
+        },
     }
 }
 
@@ -231,10 +169,40 @@ export default {
 }
 
 .post-enter-active {
-    animation: show 0.5s;
+    animation: show 0.1s;
 }
 .post-leave-active {
     animation: close 0s reverse;
+}
+
+.sidebar-enter-active {
+    animation: open 0.5s;
+}
+.sidebar-leave-active {
+    animation: end 0s reverse;
+}
+
+@keyframes open {
+    0% {
+        width: 0vw;
+        opacity: 0;
+    }
+    90%{
+        opacity: 0;
+    }
+    100% {
+        width: 25vw;
+        opacity: 1;
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -248,11 +216,6 @@ export default {
     }
 }
 
-
-html,body{
-    height: 100%;
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -263,13 +226,17 @@ a {
     z-index: 0;
 }
 
+.showtext{
+    display: none;
+}
 
-.sidebar:hover{
+.sidehover:hover{
     width: 10vw;
 }
-.sidebar:hover + .mainbar{
+.sidehover:hover + .mainbar{
     width: 65vw;
 }
+
 
 .post{
     z-index: 1;
