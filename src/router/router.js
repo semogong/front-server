@@ -1,6 +1,6 @@
 import {createRouter ,createWebHistory} from 'vue-router';
 
-import LoginFrame from "@/views/LoginFrame.vue";
+import LoginFrame from "@/views/logins/LoginFrame.vue";
 import Login from "@/views/logins/Login.vue";
 import Join from "@/views/logins/Join.vue";
 import Auth from "@/views/logins/Auth.vue";

@@ -18,7 +18,7 @@
                     로그인 정보 저장
                 </label>
             </div>
-            <button class="btn btn-primary w100 py-2 fw-bold" type="submit" style="background-color: #012060" @click="$router.push('/main')">로그인</button>
+            <button class="btn btn-primary w100 py-2 fw-bold" type="submit" style="background-color: #012060" @click="$router.push('/')">로그인</button>
         </form>
 
         <div class="d-sm-flex my-2 w100">

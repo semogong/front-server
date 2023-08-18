@@ -8,49 +8,49 @@
         <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="show=1" @mouseleave="show=0" :class="{sidehover:!isSideViewed}">
             <div class="vh75 row align-self-center justify-content-center mt-5">
                 <div class="text-center">
-                    <div @click="isSideViewed=false,controlSidebr(0)" class="d-sm-flex justify-content-center align-items-center" style="color:white;">
+                    <div @click="isSideViewed=false,controlSidebr(0)" class="d-sm-flex justify-content-center align-items-center icon" style="color:white;">
                         <img :src="imgUrls0[this.isSidebar[0]]"  class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert();">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">홈</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(1)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(1)">
                         <img :src="imgUrls1[this.isSidebar[1]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">알림</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(2)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(2)">
                         <img :src="imgUrls2[this.isSidebar[2]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">검색</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(3)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(3)">
                         <img :src="imgUrls3[this.isSidebar[3]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">그룹</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(4)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(4)">
                         <img :src="imgUrls4[this.isSidebar[4]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">채팅</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(5)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(5)">
                         <img :src="imgUrls5[this.isSidebar[5]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">스타</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <div class="d-sm-flex justify-content-center align-items-center" style="color:white" @click="isSideViewed=true,controlSidebr(6)">
+                    <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(6)">
                         <img :src="imgUrls6[this.isSidebar[6]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
                         <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">랭킹</div></transition>
                     </div>
@@ -176,7 +176,7 @@ export default {
 }
 
 .sidebar-enter-active {
-    animation: open 0.5s;
+    animation: open 0.25s;
 }
 .sidebar-leave-active {
     animation: end 0s reverse;
@@ -185,9 +185,6 @@ export default {
 @keyframes open {
     0% {
         width: 0vw;
-        opacity: 0;
-    }
-    90%{
         opacity: 0;
     }
     100% {
@@ -237,6 +234,9 @@ a {
     width: 65vw;
 }
 
+.icon:hover{
+  transform: scale(1.2);
+}
 
 .post{
     z-index: 1;

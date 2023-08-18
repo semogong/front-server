@@ -21,7 +21,7 @@ export default {
 
 <style>
 a{
-    text-decoration: none;
-    color: #B5B5B5;
+  text-decoration: none;
+  color: gray;
 }
 </style>
