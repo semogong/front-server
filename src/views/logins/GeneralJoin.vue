@@ -34,10 +34,9 @@
 
 <script>
 export default {
-    name: 'Join'
+    name: 'GeneralJoin'
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

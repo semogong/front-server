@@ -13,4 +13,5 @@ export default {
 @import "../src/assets/css/reaction.css";
 @import "../src/assets/css/common.css";
 
+
 </style>

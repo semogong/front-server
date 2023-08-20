@@ -23,10 +23,9 @@
 
 <script>
 export default {
-    name: 'Auth'
+    name: 'JoinAuth'
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

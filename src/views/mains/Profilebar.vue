@@ -1,6 +1,5 @@
 <template>
-    <div class="vw25 vh100 p-5" style="background-color: #EEEEEE">
-
+    <div class="vw20 vh100 p-4" style="background-color: #EEEEEE">
         <div class="w-100 vh60 d-sm-flex justify-content-center my-1" style="border:2px solid #B6B6B6; border-radius: 10px;">
             <div class="w-100">
                 <div class="w-100 vh5 d-sm-flex justify-content-end align-items-center px-3"><router-link to="/a"><img :src="require('@/assets/images/gear.png')" style="width: 1.5vw; height: 1.5vw;"></router-link></div>
@@ -31,8 +30,8 @@
                 </div>
                 <div class="w-100 vh10 mt-4 d-sm-flex justify-content-end align-items-center">
                     <div class="w-100 d-sm-flex justify-content-center">
-                        <button class="m-auto vh5 fs-5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 10px; width: 9vw;">게시글 작성하기</button>
-                        <button class="m-auto vh5 fs-5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 10px; width: 9vw;" >프로필 더보기</button>
+                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem">게시글 작성하기</button>
+                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem"  @click="$router.push('/profile')">프로필 더보기</button>
                     </div>
 
                 </div>

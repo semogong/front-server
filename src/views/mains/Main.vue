@@ -5,54 +5,54 @@
         <transition name="post"><router-view></router-view></transition>
 
         <!-- sidebar -->
-        <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="show=1" @mouseleave="show=0" :class="{sidehover:!isSideViewed}">
+        <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="isSideHovered=true" @mouseleave="isSideHovered=false" :class="{sidehover:!isSideViewed}">
             <div class="vh75 row align-self-center justify-content-center mt-5">
                 <div class="text-center">
-                    <div @click="isSideViewed=false,controlSidebr(0)" class="d-sm-flex justify-content-center align-items-center icon" style="color:white;">
+                    <div @click="isSideViewed=false,controlSidebr(0), $router.push('/')" class="d-sm-flex justify-content-center align-items-center icon" style="color:white;">
                         <img :src="imgUrls0[this.isSidebar[0]]"  class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert();">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">홈</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">홈</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(1)">
                         <img :src="imgUrls1[this.isSidebar[1]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">알림</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">알림</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(2)">
                         <img :src="imgUrls2[this.isSidebar[2]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">검색</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">검색</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(3)">
                         <img :src="imgUrls3[this.isSidebar[3]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">그룹</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">그룹</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(4)">
                         <img :src="imgUrls4[this.isSidebar[4]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">채팅</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">채팅</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(5)">
                         <img :src="imgUrls5[this.isSidebar[5]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">스타</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">스타</div></transition>
                     </div>
                 </div>
 
                 <div class="text-center">
                     <div class="d-sm-flex justify-content-center align-items-center icon" style="color:white" @click="isSideViewed=true,controlSidebr(6)">
                         <img :src="imgUrls6[this.isSidebar[6]]" class="m-auto" style="width: 1.5vw; height: 1.5vw; filter: invert()">
-                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="show==1" class="m-auto pe-3 fs-5">랭킹</div></transition>
+                        <transition name="bounce" :class="{showtext:isSideViewed}"><div v-if="isSideHovered" class="m-auto pe-3 fs-5">랭킹</div></transition>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
 
         <!-- sidebar detail -->
         <transition name="sidebar" >
-            <div class="vw25 vh100" style="background-color: #EEEEEE" v-if="isSideViewed==true">
+            <div class="vw20 vh100" style="background-color: #EEEEEE" v-if="isSideViewed==true">
                 <div v-if="isSidebar[1]==1">
                     <Notify @close-side="isSideViewed=false,controlSidebr(0)"></Notify>
                 </div>
@@ -90,8 +90,8 @@
 
 
         <!-- mainbar -->
-        <div class="vw70 vh100 d-sm-flex justify-content-center mainbar" style="background-color: white">
-            <div class="vw50 vh100 overflow-y-scroll hidden_scroll p-3">
+        <div class="vw50 vh100 d-sm-flex justify-content-center" style="margin-left: auto">
+            <div class="w100 vh100 overflow-y-scroll hidden_scroll p-3">
                 <!-- post -->
                 <div v-for="(val,index) in posts" :key="index" class="w-100 d-sm-flex justify-content-center my-4" style="border-radius: 15px;">
                     <router-link :to="`/post/${index}`"><PostPreview @click="isPostViewed=true,selectPost(index)"></PostPreview></router-link>
@@ -100,7 +100,7 @@
         </div>
 
         <!-- profilebar -->
-        <Profilevar></Profilevar>
+        <Profilevar style="margin-left: auto"></Profilevar>
     </div>
 </template>
 
@@ -117,12 +117,11 @@ import Profilevar from "@/views/mains/Profilebar.vue";
 import PostPreview from "@/views/posts/PostPreview.vue";
 
 export default {
-
     name: 'Main',
     components: {PostPreview, Profilevar, Rank, Star, Chat, Group, Search, Notify},
     data() {
         return {
-            show: 0,
+            isSideHovered:false,
             isPostViewed:false,
             isSideViewed:false,
             isSidebar:[1,0,0,0,0,0,0],
@@ -161,6 +160,8 @@ export default {
 
 <style scoped>
 
+
+/* if hover sidebar, show text */
 .bounce-enter-active {
     animation: bounce-in 0.4s;
 }
@@ -168,32 +169,34 @@ export default {
     animation: bounce-in 0s reverse;
 }
 
+/* if click the post preview, show post */
 .post-enter-active {
-    animation: show 0.1s;
+    animation: open 0.1s;
 }
 .post-leave-active {
     animation: close 0s reverse;
 }
 
+/* if select sidebar menu, open the sidebar detail */
 .sidebar-enter-active {
-    animation: open 0.25s;
+    animation: show 0.25s;
 }
 .sidebar-leave-active {
     animation: end 0s reverse;
 }
 
-@keyframes open {
+@keyframes show {
     0% {
         width: 0vw;
         opacity: 0;
     }
     100% {
-        width: 25vw;
+        width: 20vw;
         opacity: 1;
     }
 }
 
-@keyframes show {
+@keyframes open {
     0% {
         opacity: 0;
     }
@@ -201,8 +204,6 @@ export default {
         opacity: 1;
     }
 }
-
-
 
 @keyframes bounce-in {
     0% {
@@ -212,6 +213,7 @@ export default {
         opacity: 1;
     }
 }
+
 
 a {
     text-decoration: none;
@@ -229,9 +231,6 @@ a {
 
 .sidehover:hover{
     width: 10vw;
-}
-.sidehover:hover + .mainbar{
-    width: 65vw;
 }
 
 .icon:hover{

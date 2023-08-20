@@ -9,7 +9,7 @@
         <div class="w-100 vh10 text-center fs-2 fw-bolder">
             알림
         </div>
-        <div class="w-100 vh20" style="background-color: #B5B5B5"></div>
+        <div class="w-100 vh20" style="background-color: #B5B5B5">끼요오오오옷</div>
         <div class="w-100 vh20" style="background-color: lightgray"></div>
         <div class="w-100 vh20" style="background-color: gray"></div>
         <div class="w-100 vh20" style="background-color: lightgray"></div>

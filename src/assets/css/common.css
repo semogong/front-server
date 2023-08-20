@@ -22,7 +22,7 @@
     scrollbar-width: none; /* 파이어폭스 */
 }
 
-a{
-    text-decoration: none;
-    color: #B5B5B5;
+/* */
+button{
+    border: none;
 }

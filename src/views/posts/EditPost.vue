@@ -72,7 +72,6 @@ export default {
   position: fixed;
   left:0px;
   top:0px;
-
 }
 
 .overlay{
@@ -86,20 +85,6 @@ export default {
   width: 70vw;
   height: 95vh;
   margin: auto;
-}
-button{
-  border: none;
-}
-
-.post_option{
-  position:relative;
-  background-color: red;
-  width: 10vw;
-  height: 10vh;
-  margin: auto;
-  left:50vw;
-  top:-30vh;
-  z-index: 5;
 }
 
 </style>
