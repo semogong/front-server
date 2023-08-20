@@ -2,7 +2,9 @@
 
     <div class="vw100 vh100 d-sm-flex ">
         <!-- post -->
-        <transition name="post"><router-view></router-view></transition>
+        <transition name="post">
+            <router-view></router-view>
+        </transition>
 
         <!-- sidebar -->
         <div class="sidebar vw5 vh100" style="background-color: #012060" @mouseover="isSideHovered=true"
@@ -176,68 +178,67 @@
                 <div class="w100 h5 d-sm-flex justify-content-center">
                     <div class="d-sm-flex justify-content-center w-75">
                         <router-link to="/profile" class="d-sm-flex justify-content-center align-items-center m-auto">
-                          <div class="d-sm-flex justify-content-center align-items-center m-auto">
-                              <div class="mx-1">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16" style="color: #5B5B5B">
-                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                                  </svg>
-                              </div>
-                              <div style="color: #5B5B5B">게시글</div>
-                          </div>
+                            <div class="d-sm-flex justify-content-center align-items-center m-auto">
+                                <div class="mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16" style="color: #CDCDCD">
+                                        <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                    </svg>
+                                </div>
+                                <div style="color: #CDCDCD">게시글</div>
+                            </div>
                         </router-link>
 
                         <router-link to="/profile-save" class="d-sm-flex justify-content-center align-items-center m-auto">
-                          <div class="d-sm-flex justify-content-center align-items-center m-auto">
-                              <div class="mx-1">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16" style="color: #CDCDCD">
-                                      <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
-                                  </svg>
-                              </div>
-                              <div class="mx-1" style="color: #CDCDCD">보관함</div>
-                          </div>
+                            <div class="d-sm-flex justify-content-center align-items-center m-auto">
+                                <div class="mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16" style="color: #CDCDCD">
+                                        <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                                    </svg>
+                                </div>
+                                <div class="mx-1" style="color: #CDCDCD">보관함</div>
+                            </div>
                         </router-link>
 
                         <router-link to="/profile-star" class="d-sm-flex justify-content-center align-items-center m-auto">
-                          <div class="d-sm-flex justify-content-center align-items-center m-auto">
-                              <div class="mx-1">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="color: #CDCDCD">
-                                      <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                                  </svg>
-                              </div>
-                              <div class="mx-1" style="color: #CDCDCD">즐겨찾기</div>
-                          </div>
+                            <div class="d-sm-flex justify-content-center align-items-center m-auto">
+                                <div class="mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" style="color: #CDCDCD">
+                                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="mx-1" style="color: #CDCDCD">즐겨찾기</div>
+                            </div>
                         </router-link>
 
 
                         <router-link to="/profile-group" class="d-sm-flex justify-content-center align-items-center m-auto">
-                          <div class="d-sm-flex justify-content-center align-items-center m-auto">
-                              <div class="mx-1">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16" style="color: #CDCDCD">
-                                      <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
-                                  </svg>
-                              </div>
-                              <div class="mx-1" style="color: #CDCDCD">그룹</div>
-                          </div>
+                            <div class="d-sm-flex justify-content-center align-items-center m-auto">
+                                <div class="mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16" style="color: #5B5B5B">
+                                        <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+                                    </svg>
+                                </div>
+                                <div class="mx-1" style="color: #5B5B5B">그룹</div>
+                            </div>
                         </router-link>
 
                         <router-link to="/profile-static" class="d-sm-flex justify-content-center align-items-center m-auto">
-                          <div class="d-sm-flex justify-content-center align-items-center m-auto">
-                              <div class="mx-1" @click="$router.push('/profile-group')">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-down" viewBox="0 0 16 16" style="color: #CDCDCD">
-                                      <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
-                                  </svg>
-                              </div>
-                              <div class="mx-1" style="color: #CDCDCD">통계</div>
-                          </div>
+                            <div class="d-sm-flex justify-content-center align-items-center m-auto">
+                                <div class="mx-1" @click="$router.push('/profile-group')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-down" viewBox="0 0 16 16" style="color: #CDCDCD">
+                                        <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
+                                    </svg>
+                                </div>
+                                <div class="mx-1" style="color: #CDCDCD">통계</div>
+                            </div>
                         </router-link>
                     </div>
                 </div>
 
                 <div class="w100 vh45 scroll overflow-y-scroll">
-                    <div class="w100 h50 d-sm-flex justify-content-center my-3" v-for="(val,index) in posts" :key="index">
-                        <div class="w70 h100 p-3" style="border-radius: 10px; background-color: #F3F3F3" >
-                            <router-link :to="`/profile/post/${index}`">
+                    <div class="w100 h50 d-sm-flex justify-content-center my-3">
+                        <div class="w70 h100 p-3" style="border-radius: 10px; background-color: #F3F3F3">
                             <div class="w100 h15 my-1 fw-bold fs-4 d-sm-flex align-items-center">JAVA + SPRING BOOT</div>
                             <div class="w100 h10 my-1 fw-bold fs-5 d-sm-flex align-items-center" style="color: #BBBBBB">Chapter 1: 개요</div>
                             <div class="w100 h50 my-1 d-sm-flex align-items-center">
@@ -248,9 +249,28 @@
                                 Chapter 3 [API 개발 고급(2)]
                                 컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)
                             </div>
-                            </router-link>
+                            <div class="w100 h15 fw-bold text-lg-end fs-5">
+                                written by 박승일
+                            </div>
                         </div>
+                    </div>
 
+                    <div class="w100 h50 d-sm-flex justify-content-center my-3">
+                        <div class="w70 h100 p-3" style="border-radius: 10px; background-color: #F3F3F3">
+                            <div class="w100 h15 my-1 fw-bold fs-4 d-sm-flex align-items-center">JAVA + SPRING BOOT</div>
+                            <div class="w100 h10 my-1 fw-bold fs-5 d-sm-flex align-items-center" style="color: #BBBBBB">Chapter 1: 개요</div>
+                            <div class="w100 h50 my-1 d-sm-flex align-items-center">
+                                SpringBoot API
+                                Chapter 3 [API 개발 고급(2)]
+                                컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)
+                                SpringBoot API
+                                Chapter 3 [API 개발 고급(2)]
+                                컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)
+                            </div>
+                            <div class="w100 h15 fw-bold text-lg-end fs-5">
+                                written by 박승일
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,7 +289,7 @@ import Star from "@/views/mains/Star.vue";
 import Rank from "@/views/mains/Rank.vue";
 
 export default {
-    name: 'Profile',
+    name: 'ProfileGroup',
     components: {Rank, Star, Chat, Group, Search, Notify},
     data() {
         return {
@@ -278,13 +298,6 @@ export default {
             isSideViewed: false,
             isSidebar: [1, 0, 0, 0, 0, 0, 0],
             isSidebarFrom: 0,
-            posts: [
-                { id: 1, title: 'Post 1', editor:'박정빈',editTime:"30분전"},
-                { id: 2, title: 'Post 2', editor:'박승일',editTime:"1시간전"},
-                { id: 3, title: 'Post 3', editor:'이재훈',editTime:"2시간전"},
-                { id: 4, title: 'Post 4', editor:'박정빈',editTime:"30분전"},
-                { id: 5, title: 'Post 5', editor:'박승일',editTime:"1시간전"},
-                { id: 6, title: 'Post 6', editor:'이재훈',editTime:"2시간전"},],
             imgUrls0: [require('@/assets/images/home.png'), require('@/assets/images/home_fill.png')],
             imgUrls1: [require('@/assets/images/notification.png'), require('@/assets/images/notification_fill.png')],
             imgUrls2: [require('@/assets/images/search.png'), require('@/assets/images/search_fill.png')],

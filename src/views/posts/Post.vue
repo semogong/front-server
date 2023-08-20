@@ -5,10 +5,9 @@
     <edit-post class="post" v-if="isPostEditViewed" @close-edit-modal="isPostEditViewed=false,isPostContent=true"
                style="z-index: 5"></edit-post>
 
-    <router-link to="/">
-      <div class="overlay" @click="$emit('close-modal')"></div>
+
+      <div class="overlay"  @click="$emit('close-modal'), $router.go(-1)"></div>
       ]
-    </router-link>
 
     <div v-if="isPostContent" class="modal-card d-sm-flex justify-content-center">
       <div class="vw75 h-100" style="background-color: white;">

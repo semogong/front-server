@@ -94,7 +94,7 @@
             <div class="w100 vh100 overflow-y-scroll hidden_scroll p-3">
                 <!-- post -->
                 <div v-for="(val,index) in posts" :key="index" class="w-100 d-sm-flex justify-content-center my-4" style="border-radius: 15px;">
-                    <router-link :to="`/post/${index}`"><PostPreview @click="isPostViewed=true,selectPost(index)"></PostPreview></router-link>
+                    <router-link :to="`/main/post/${index}`"><PostPreview @click="isPostViewed=true,selectPost(index)"></PostPreview></router-link>
                 </div>
             </div>
         </div>
