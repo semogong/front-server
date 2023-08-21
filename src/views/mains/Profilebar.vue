@@ -1,5 +1,5 @@
 <template>
-    <div class="vw20 vh100 p-4" style="background-color: #EEEEEE">
+    <div class="vw20 vh100 p-4 ms-sm-auto backcolor-lightgray">
         <div class="w-100 vh60 d-sm-flex justify-content-center my-1" style="border:2px solid #B6B6B6; border-radius: 10px;">
             <div class="w-100">
                 <div class="w-100 vh5 d-sm-flex justify-content-end align-items-center px-3"><router-link to="/a"><img :src="require('@/assets/images/gear.png')" style="width: 1.5vw; height: 1.5vw;"></router-link></div>

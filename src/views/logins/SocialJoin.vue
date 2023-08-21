@@ -19,7 +19,6 @@
         <div class="d-sm-flex w100">
             <p class="m-auto fw-bold" style="color: #FF0000">로그인 정보를 다시 확인해주세요</p>
         </div>
-
     </div>
 </template>
 

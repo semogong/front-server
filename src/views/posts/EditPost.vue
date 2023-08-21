@@ -1,6 +1,6 @@
 <template>
   <div class="post">
-    <router-link :to="`/post/${this.$route.params.id}`"><div class="overlay" @click="$emit('close-edit-modal')"></div>]</router-link>
+    <div class="overlay" @click="$emit('close-edit-modal'),this.$router.go(-1)"></div>]
 
     <div class="modal-card d-sm-flex justify-content-center">
 

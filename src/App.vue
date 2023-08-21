@@ -14,4 +14,15 @@ export default {
 @import "../src/assets/css/common.css";
 
 
+.backcolor-navy{
+  background-color: #012060;
+}
+
+.backcolor-lightgray{
+  background-color: #EEEEEE;
+}
+
+.color-white{
+  color: white;
+}
 </style>

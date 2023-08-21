@@ -3,10 +3,9 @@
   <div class="post">
 
     <edit-post class="post" v-if="isPostEditViewed" @close-edit-modal="isPostEditViewed=false,isPostContent=true"
-               style="z-index: 5"></edit-post>
+               style="z-index: 2"></edit-post>
 
-
-      <div class="overlay"  @click="$emit('close-modal'), $router.go(-1)"></div>
+    <div class="overlay"  @click="$emit('close-modal'), this.$router.go(-1)"></div>
       ]
 
     <div v-if="isPostContent" class="modal-card d-sm-flex justify-content-center">
@@ -63,10 +62,10 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
                 <li @click="isPostEditViewed=true,isPostContent=false">
-                  <router-link :to="`/post/${this.$route.params.id}/edit`" class="dropdown-item">수정하기</router-link>
+                  <router-link :to="`${this.$route.path}/edit`" class="dropdown-item">수정하기</router-link>
                 </li>
                 <li @click="isPostEditViewed=true,isPostContent=false">
-                  <router-link :to="`/post/${this.$route.params.id}/edit`" class="dropdown-item">삭제하기</router-link>
+                  <router-link :to="`${this.$route.path}/edit`" class="dropdown-item">삭제하기</router-link>
                 </li>
               </ul>
             </div>

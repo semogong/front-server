@@ -12,16 +12,13 @@
           Chapter 3 [API 개발 고급(2)]
           컬렉션 조회 최적화 (Entity 직접 반환, DTO로 변환하여 반환, Fetch Join & Distinct로 성능 최적화, Fetch Join & hibernate.default_batch_fetch_size 를 통해 최적화)
         </div>
-        <div class="w100 h15 fw-bold text-lg-end fs-5">
-          written by 박승일
-        </div>
       </router-link>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name:'ProfileSave',
+  name:'ProfileMain',
   data(){
     return{
       posts: [
