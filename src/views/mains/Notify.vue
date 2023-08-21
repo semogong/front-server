@@ -11,11 +11,12 @@
         </div>
         <div class="w-100 vh85">
 
-          <div class="d-sm-flex justify-content-lg-start align-items-center h10 mb-1 p-3" style="background-color: #D9D9D9" @click="isNotifyDetail=true">
+          <div class="d-sm-flex justify-content-lg-start align-items-center h10 mb-1 p-3" style="background-color: #D9D9D9" @click="isNotifyDetail+=1">
             <div class="m-auto w20"><div class="text-ceter d-sm-flex align-items-center justify-content-center fw-bold" style="background-color:#78AD0A; border-radius: 50%; color: white; width: 3vw; height: 3vw;">공지</div></div>
             <div class="fw-bold w80 m-auto">[업데이트] 8/1 (화) ver1.2.379 마이너버전</div>
           </div>
-          <div v-if="isNotifyDetail" @click="isNotifyDetail=false" class="w100 mb-3" style="background-color:#D9D9D9; height: 30vh;"></div>
+
+          <transition name="ShowNotifyDetail"><div v-if="isNotifyDetail%2==0" @click="isNotifyDetail+=1" class="w100 mb-3" style="background-color:#D9D9D9; height: 30vh;"></div></transition>
 
           <div class="d-sm-flex justify-content-lg-start align-items-center h10 mb-5 p-3" style="background-color: #D9D9D9">
             <div class="m-auto w20"><div class="text-ceter d-sm-flex align-items-center justify-content-center fw-bold" style="background-color:#BFBFBF; border-radius: 50%; width: 3vw; height: 3vw;">알림</div></div>
@@ -30,7 +31,7 @@ export default {
     name: 'Notify',
   data(){
       return{
-        isNotifyDetail:false,
+        isNotifyDetail:1,
       }
   }
 }
@@ -38,6 +39,25 @@ export default {
 </script>
 
 <style scoped>
+
+.ShowNotifyDetail-enter-active {
+    animation: bounce-in 0.25s;
+}
+
+.ShowNotifyDetail-enter-activeleave-active {
+    animation: bounce-in 0.4s reverse;
+}
+
+@keyframes bounce-in {
+    0% {
+        height: 0vh;
+    }
+    100% {
+        height: 30vh;
+    }
+}
+
+
 a {
   text-decoration: none;
   color: black;
