@@ -47,7 +47,7 @@
                         <div class="m-auto"><button @click="$router.push('/stop')" style="border: 0px;"><img style="width: 1.5vw; height: 1.5vw;" :src="require('@/assets/images/stop.png')"></button></div>
                     </div>
                 </div>
-                <div class="vh5 w-100 fw-bold text-center" style="color: #012060">30분뒤 ‘열공’ 상태로 전환됩니다</div>
+                <div class="vh5 w-100 fw-bold text-center" style="color: #0038FF">30분뒤 ‘열공’ 상태로 전환됩니다</div>
                 <div class="vh5 w-100">
                     <div class="w-100 vh5 d-sm-flex justify-content-center">
                         <div class="w-50 text-center fs-5 fw-bold" style="color: #666666">오늘의 공부시간</div>
