@@ -2,28 +2,76 @@
     <div class="mt-4">
         <div class="w100 fs-5 fw-bold">비밀번호 찾기</div>
 
-        <form class="w100 h25">
+        <div class="w100 h25">
             <div class="form-floating my-2">
-                <input type="password" class="form-control" id="floatingInput" placeholder="Password">
-                <label for="floatingPassword">이메일</label>
+                <input type="email" class="form-control" id="floatingInput" placeholder="Email" v-model="state.form.email">
+                <label for="floatingEmail">이메일</label>
             </div>
 
             <div class="d-sm-flex justify-content-between my-3">
-                <button class="btn btn-primary py-2 fw-bold" type="submit" style="background-color: #012060; width: 35%;" @click="$router.push('/login')">취소</button>
-                <button class="btn btn-primary py-2 fw-bold" type="submit" style="background-color: #012060; width: 60%;" @click="$router.push('/login')">확인</button>
+                <button class="btn btn-primary py-2 fw-bold" type="submit" style="background-color: #012060; width: 35%;" @@click="restFormInfo()">취소</button>
+                <button class="btn btn-primary py-2 fw-bold" type="submit" style="background-color: #012060; width: 60%;" @click="submitEmailInfo()">확인</button>
             </div>
-        </form>
+        </div>
 
         <div class="d-sm-flex w100">
-            <p class="m-auto fw-bold" style="color: #0038FF">이메일로 인증정보를 전송했습니다</p>
+            <p v-if="state.statusCode=='0000'" class="m-auto fw-bold" style="color: #0038FF">{{ state.msg }}</p>
+            <p v-if="state.statusCode!='0000'" class="m-auto fw-bold" style="color: #FF0000">{{ state.msg }}</p>
         </div>
     </div>
 </template>
 
 
 <script>
+import axios from "axios";
+import {reactive} from "vue";
+import {useStore} from "vuex";
+
 export default {
-    name: 'FindPw'
+  name: 'FindPw',
+
+  setup(){
+    const store = useStore()
+    const state = reactive({
+      form:{
+        email:"",
+        password:"",
+        name:"",
+      },
+      statusCode:"",
+      msg:"",
+      data:"",
+    })
+
+    const submitEmailInfo = ()=>{
+      axios.post("/api/v1/login/find-pw", state.form).then((res) =>{
+        state.statusCode = res.data["statusCode"];
+        state.msg = res.data["msg"];
+        state.data = res.data["data"];
+        console.log(state.statusCode)
+        console.log(state.msg);
+        console.log(state.data);
+
+        // 로그인 정보가 조건에 맞으면
+        if (state.statusCode == "0000"){
+          store.state.form.email = state.form.email;
+          store.state.form.password = state.form.password;
+          store.state.form.name = state.form.name;
+        }
+
+      })
+    }
+
+    return {state,submitEmailInfo}
+  },
+
+  methods: {
+    restFormInfo(){
+      this.$store.commit("restFormInfo")
+      this.$router.push('/login')
+    }
+
+  },
 }
 </script>
 
