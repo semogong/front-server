@@ -140,9 +140,8 @@ export default {
     }
   },
   created() {
-    // const idx = this.$store.getters.selectedPostId;
     const router_idx = this.$route.params.id;
-    const urls = '/api/items/' + router_idx;
+    const urls = "/api/items/" + router_idx;
     axios.get(urls).then((res) => {
       this.msg = res.data;
     })
