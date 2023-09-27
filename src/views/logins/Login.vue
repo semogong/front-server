@@ -22,9 +22,8 @@ export default {
 
   setup(){
     const state = reactive({
-      statusCode:0,
-      msg:"",
-      data:"",
+      clientMsg:"",
+      statusCode:"",
     })
 
     return{state}

@@ -31,7 +31,7 @@
                 <div class="w-100 vh10 mt-4 d-sm-flex justify-content-end align-items-center">
                     <div class="w-100 d-sm-flex justify-content-center">
                         <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem">게시글 작성하기</button>
-                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem"  @click="$router.push('/profile')">프로필 더보기</button>
+                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem"  @click="submitLoginInfo()">프로필 더보기</button>
                     </div>
 
                 </div>
@@ -73,10 +73,48 @@
 
 
 <script>
-export default {
-    name: 'Profilevar',
-}
 
+import {reactive} from "vue";
+import axios from "axios";
+import router from "@/router/router";
+
+export default {
+  name: 'Profilebar',
+  setup() {
+    const state = reactive({
+      form: {
+        email: "",
+        password: "",
+        name: "",
+      },
+      statusCode: "",
+      msg: "",
+      data: "",
+      auth: "",
+    })
+
+    const submitLoginInfo = () => {
+      axios.post("/api/v1/login/profile").then((res) => {
+        state.statusCode = res.data["statusCode"];
+        state.msg = res.data["msg"];
+        state.data = res.data["data"];
+        console.log(state.statusCode)
+        console.log(state.msg);
+        console.log(state.data);
+
+        // 로그인 정보가 조건에 맞으면
+        if (state.statusCode == "0000") {
+          router.push("/profile");
+        } else {
+          router.push("/");
+        }
+
+      })
+    }
+
+    return {state, submitLoginInfo}
+  },
+}
 </script>
 
 <style scoped>

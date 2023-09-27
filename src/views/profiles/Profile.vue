@@ -207,13 +207,17 @@ import ProfileSave from "@/views/profiles/ProfileSave.vue";
 import ProfileStar from "@/views/profiles/ProfileStar.vue";
 import ProfileGroup from "@/views/profiles/ProfileGroup.vue";
 import ProfileStatic from "@/views/profiles/ProfileStatic.vue";
+import {reactive} from "vue";
+import axios from "axios";
+import router from "@/router/router";
 
 
 export default {
   name: 'Profile',
   components: {
     ProfileStatic,
-    ProfileGroup, ProfileStar, ProfileSave, ProfileMain, Rank, Star, Chat, Group, Search, Notify},
+    ProfileGroup, ProfileStar, ProfileSave, ProfileMain, Rank, Star, Chat, Group, Search, Notify
+  },
   data() {
     return {
       isSideHovered: false,
@@ -222,7 +226,7 @@ export default {
       isSidebarState: [0, 0, 0, 0, 0, 0, 0],
       isProfileOptionState: [1, 0, 0, 0, 0],
       isSidebarFrom: 0,
-      isOptionFrom:0,
+      isOptionFrom: 0,
       posts: [
         {id: 1, title: 'Post 1', editor: '박정빈', editTime: "30분전"},
         {id: 2, title: 'Post 2', editor: '박승일', editTime: "1시간전"},
@@ -267,7 +271,42 @@ export default {
       this.isProfileOptionState[to] = 1;
       this.isOptionFrom = to;
     },
-  }
+  },
+  setup() {
+    const state = reactive({
+      form: {
+        email: "",
+        password: "",
+        name: "",
+      },
+      statusCode: "",
+      msg: "",
+      data: "",
+      auth: "",
+    })
+
+    const submitLoginInfo = () => {
+      axios.post("/api/v1/login/profile").then((res) => {
+        state.statusCode = res.data["statusCode"];
+        state.msg = res.data["msg"];
+        state.data = res.data["data"];
+        console.log(state.statusCode)
+        console.log(state.msg);
+        console.log(state.data);
+
+        // 로그인 정보가 조건에 맞으면
+        if (state.statusCode == "0000") {
+          router.push("/profile");
+        } else {
+          router.push("/");
+        }
+
+      })
+    }
+
+    return {state, submitLoginInfo}
+  },
+
 }
 
 </script>

@@ -15,9 +15,8 @@
         </div>
 
         <div class="d-sm-flex w100">
-          <p v-if="state.statusCode=='0000'" class="m-auto fw-bold" style="color: #0038FF">{{ state.msg }}</p>
-          <p v-if="state.statusCode!='0000'" class="m-auto fw-bold" style="color: #FF0000">{{ state.msg }}</p>
-
+          <p v-if="state.statusCode=='0000'" class="m-auto fw-bold" style="color: #0038FF">{{ state.clientMsg }}</p>
+          <p v-if="state.statusCode!='0000'" class="m-auto fw-bold" style="color: #FF0000">{{ state.clientMsg }}</p>
         </div>
     </div>
 
@@ -42,30 +41,24 @@ export default {
         name:store.state.form.name,
         code:store.state.form.code,
       },
+      clientMsg:"",
       statusCode:"",
-      msg:"",
-      data:"",
     })
 
     const sendCode = ()=>{
       axios.post("/api/v1/join/send-code", store.state.form).then((res) =>{
-        state.statusCode = res.data["statusCode"];
-        state.msg = res.data["msg"];
-        state.data = res.data["data"];
-        console.log(state.statusCode);
-        console.log(state.msg);
-        console.log(state.data);
+        console.log(res.data);
+        state.statusCode = res.data["statusCode"]
+        state.clientMsg = res.data["data"]["clientMsg"];
+
       })
     }
 
     const checkCode = ()=>{
       axios.post("/api/v1/join/check-code", state.form).then((res) =>{
-        state.statusCode = res.data["statusCode"];
-        state.msg = res.data["msg"];
-        state.data = res.data["data"];
-        console.log(state.statusCode);
-        console.log(state.msg);
-        console.log(state.data);
+        console.log(res.data);
+        state.statusCode = res.data["statusCode"]
+        state.clientMsg = res.data["data"]["clientMsg"];
 
         if (state.statusCode=="0000"){
           window.alert("회원가입을 축하합니다!!");
@@ -76,17 +69,6 @@ export default {
     }
 
     return {state,sendCode,checkCode}
-  },
-
-  methods: {
-    incrementCount() {
-      this.$store.commit('incrementCountMutation')
-    },
-    restLoginInfo(){
-      this.$store.commit("restLoginInfo")
-      this.$router.push('/login')
-    },
-
   },
 }
 </script>

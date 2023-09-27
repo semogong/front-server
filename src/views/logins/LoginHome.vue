@@ -61,16 +61,14 @@ export default {
       statusCode:"",
       msg:"",
       data:"",
+      auth:"",
     })
 
     const submitLoginInfo = ()=>{
       axios.post("/api/v1/login/check-login", state.form).then((res) =>{
-        state.statusCode = res.data["statusCode"];
-        state.msg = res.data["msg"];
-        state.data = res.data["data"];
-        console.log(state.statusCode)
-        console.log(state.msg);
-        console.log(state.data);
+        console.log(res.data);
+        state.statusCode = res.data["statusCode"]
+        state.clientMsg = res.data["data"]["clientMsg"];
 
         // 로그인 정보가 조건에 맞으면
         if (state.statusCode == "0000"){
@@ -78,6 +76,7 @@ export default {
           store.state.form.password = state.form.password;
           store.state.form.name = state.form.name;
           router.push("/");
+
         }
 
       })

@@ -9,6 +9,9 @@ export const store = createStore({
                 name:1,
                 code:"",
             },
+            auth:{
+                token:"",
+            }
 
         }
     },
