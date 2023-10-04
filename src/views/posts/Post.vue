@@ -15,8 +15,8 @@
              style=" height: 10%; border: solid #E3E3E3; border-width: 0px 0px 3px 0px ">
           <div class="d-sm-flex align-items-center">
             <div class="mx-1"><img style="width: 2vw;" :src="require('@/assets/images/profile-user.png')"></div>
-            <div class="fs-5 fw-bold mx-2">김지완</div>
-            <div class="mx-2" style="color: #828282">2023.07.11 07:24</div>
+            <div class="fs-5 fw-bold mx-2">{{ state.names }}</div>
+            <div class="mx-2" style="color: #828282">{{ state.times }}</div>
           </div>
           <div class="d-sm-flex align-items-center" style="position: relative">
             <div class="mx-3 d-sm-flex justify-content-center align-items-center">
@@ -73,17 +73,14 @@
 
         </div>
         <div class="w-100 p-5 overflow-y-scroll hidden_scroll" style="background-color: white; height: 85%;">
-          <div class="w-100 text-center fs-1 fw-bold">Spring Boot API</div>
-          <div class="w-100  text-center fs-3 fw-bold" style="height: 10%; color: gray">Chapter 1. 개요</div>
+          <div class="w-100 text-center fs-1 fw-bold">{{ state.data.title }}</div>
+          <div class="w-100  text-center fs-3 fw-bold" style="height: 10%; color: gray">{{ state.data.subtitle }}</div>
           <div class="w-100 h-25 fs-5 p-4">
-            {{ msg }}
+            {{ state.data.content }}
           </div>
         </div>
         <div class="w-100 p-3 d-sm-flex justify-content-lg-start px-5" style="background-color: white; height: 5%;">
-          <div class="fw-bold ms-3" style="color: #666666">#Java</div>
-          <div class="fw-bold ms-3" style="color: #666666">#Spring Boot</div>
-          <div class="fw-bold ms-3" style="color: #666666">#JPA</div>
-          <div class="fw-bold ms-3" style="color: #666666">#SQL</div>
+          <div class="fw-bold ms-3" style="color: #666666">{{state.data.tag}}</div>
         </div>
       </div>
 
@@ -126,8 +123,9 @@
 </template>
 <script>
 
-import axios from "axios";
 import EditPost from "@/views/posts/EditPost.vue";
+import {reactive} from "vue";
+import axios from "axios";
 
 export default {
   name: 'Post',
@@ -139,11 +137,33 @@ export default {
       isPostContent: true
     }
   },
+  setup() {
+
+    const state = reactive({
+      form: {
+        email: "",
+        password: "",
+        name: "",
+      },
+      clientMsg: "",
+      statusCode: "",
+      data:"",
+      names:"",
+      times:"",
+
+    })
+
+    return{state}
+  },
   created() {
     const router_idx = this.$route.params.id;
-    const urls = "/api/items/" + router_idx;
-    axios.get(urls).then((res) => {
-      this.msg = res.data;
+    const urls = "/api/v1/main/post/" + router_idx;
+    axios.post(urls).then((res) => {
+      this.state.statusCode = res.data["statusCode"];
+      this.state.msg = res.data["msg"];
+      this.state.data = res.data["data"]["post"];
+      this.state.names = res.data["data"]["post"]["member"]["name"];
+      this.state.times = res.data["data"]["post"]["formedCreatedAt"];
     })
 
   },

@@ -22,7 +22,7 @@ export const store = createStore({
             state.form.name = "";
             state.form.code = "";
         },
-        abcd(state,data){
+        printLog(state,data){
             state.form.code = data;
         }
 

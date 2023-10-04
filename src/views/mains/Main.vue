@@ -64,13 +64,45 @@
       </div>
     </transition>
 
-
     <!-- mainbar -->
     <div class="vw50 vh100 d-sm-flex justify-content-center ms-sm-auto">
       <div class="w100 vh100 overflow-y-scroll hidden_scroll p-3">
         <!-- post -->
-        <div v-for="(val,index) in posts" :key="index" class="w-100 d-sm-flex justify-content-center my-4" @click="$router.push(`/post/${index}`)">
-            <PostPreview @click="isPostViewed=true"></PostPreview>
+        <div v-for="(val,index) in state.data" :key="index" class="w-100 d-sm-flex justify-content-center my-4" @click="$router.push(`/post/${val.id}`)">
+<!--            <PostPreview @click="isPostViewed=true"></PostPreview>-->
+          <div class="vw50 vh50" style="background-color: #F9F9F9">
+            <div class="header w-100 vh5 d-sm-flex align-items-center ps-4" style="background-color: #012060; border-radius: 10px 10px 0 0">
+              <div style="width: 2vw"><img :src="require('@/assets/images/profile-user.png')" style="border-radius: 50%; filter: invert(); width: 1.5vw; height: 1.5vw;"></div>
+              <div class="fw-bold" style="color:white; width: 4vw;">{{val.member.name}}</div>
+              <div style="color:lightgray; font-size: 1rem; width: 10vw;">{{ val.formedCreatedAt }}</div>
+            </div>
+
+            <div class="body vh45 w-100 pe-5" style="border: lightgray 1px solid; border-radius: 0px 0px 10px 10px">
+              <div class="vh15 w-100 d-sm-flex align-items-center">
+                <div class="ms-5">
+                  <div class="fs-1 fw-bold">{{ val.title }}</div>
+                  <div class="fs-3 fw-bold" style="color: gray">{{val.subtitle}}</div>
+                </div>
+              </div>
+              <div class="vh25 w-100" style="overflow: hidden">
+                <div class="ms-5">
+                  <div class="fs-5">{{val.content}}</div>
+                </div>
+              </div>
+              <div class="vh5 w-100">
+                <div class="ms-5 d-sm-flex justify-content-between">
+                  <div class="d-sm-flex justify-content-center">
+                    <div class="mx-1 fw-bold">{{val.tag}}</div>
+                  </div>
+                  <div class="d-sm-flex justify-content-center">
+                    <div class="mx-1 fw-bold">조회 10</div>
+                    <div class="mx-1 fw-bold">추천 9</div>
+                    <div class="mx-1 fw-bold">저장 1</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -89,11 +121,38 @@ import Chat from "@/views/mains/Chat.vue";
 import Star from "@/views/mains/Star.vue";
 import Rank from "@/views/mains/Rank.vue";
 import Profilevar from "@/views/mains/Profilebar.vue";
-import PostPreview from "@/views/posts/PostPreview.vue";
+
+import {reactive} from "vue";
+import axios from "axios";
 
 export default {
   name: 'Main',
-  components: {PostPreview, Profilevar, Rank, Star, Chat, Group, Search, Notify},
+  components: {Profilevar, Rank, Star, Chat, Group, Search, Notify},
+  setup() {
+    const state = reactive({
+      form: {
+        email: "",
+        password: "",
+        name: "",
+      },
+      clientMsg: "",
+      statusCode: "",
+      data:"",
+
+    })
+
+    axios.post("/api/v1/main/posts").then((res) => {
+      state.statusCode = res.data["statusCode"];
+      state.msg = res.data["msg"];
+      state.data = res.data["data"]["posts"];
+      console.log(state.statusCode)
+      console.log(state.msg);
+      console.log(state.data);
+    })
+
+    return{state}
+  },
+
   data() {
     return {
       isSideHovered: false,
@@ -101,46 +160,27 @@ export default {
       isPostViewed: false,
       isSidebarState: [1, 0, 0, 0, 0, 0, 0],
       isSidebarFrom: 0,
-      posts: [
-        {id: 1, title: 'Post 1', editor: '박정빈', editTime: "30분전"},
-        {id: 2, title: 'Post 2', editor: '박승일', editTime: "1시간전"},
-        {id: 3, title: 'Post 3', editor: '이재훈', editTime: "2시간전"},
-        {id: 4, title: 'Post 4', editor: '박정빈', editTime: "30분전"},
-        {id: 5, title: 'Post 5', editor: '박승일', editTime: "1시간전"},
-        {id: 6, title: 'Post 6', editor: '이재훈', editTime: "2시간전"},],
-
+      posts: this.state.data,
       icons: [
-        {
-          id: 1,
-          title: '알림',
-          unfill: [require('@/assets/images/notification.png'), require('@/assets/images/notification_fill.png')]
-        },
-        {
-          id: 2,
-          title: '검색',
-          unfill: [require('@/assets/images/search.png'), require('@/assets/images/search_fill.png')]
-        },
+        {id: 1, title: '알림', unfill: [require('@/assets/images/notification.png'), require('@/assets/images/notification_fill.png')]},
+        {id: 2, title: '검색', unfill: [require('@/assets/images/search.png'), require('@/assets/images/search_fill.png')]},
         {id: 3, title: '그룹', unfill: [require('@/assets/images/group.png'), require('@/assets/images/group_fill.png')]},
         {id: 4, title: '채팅', unfill: [require('@/assets/images/chat.png'), require('@/assets/images/chat_fill.png')]},
         {id: 5, title: '스타', unfill: [require('@/assets/images/star.png'), require('@/assets/images/start_fill.png')]},
-        {
-          id: 6,
-          title: '랭킹',
-          unfill: [require('@/assets/images/ranking.png'), require('@/assets/images/ranking_fill.png')]
-        }
-      ],
-      homeIconUrls: [
-        {id: 1, title: '홈', unfill: [require('@/assets/images/home.png'), require('@/assets/images/home_fill.png')]}
-      ],
+        {id: 6, title: '랭킹', unfill: [require('@/assets/images/ranking.png'), require('@/assets/images/ranking_fill.png')]}],
+      homeIconUrls: [{id: 1, title: '홈', unfill: [require('@/assets/images/home.png'), require('@/assets/images/home_fill.png')]}],
     };
   },
+
   methods: {
     controlSidebar(to) {
       this.isSidebarState[this.isSidebarFrom] = 0;
       this.isSidebarState[to] = 1;
       this.isSidebarFrom = to;
     },
-  }
+  },
+
+
 }
 
 </script>

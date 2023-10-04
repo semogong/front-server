@@ -8,13 +8,10 @@
                 </div>
                 <div class="w-100 vh5 d-sm-flex justify-content-center align-items-center">
                     <img :src="require('@/assets/images/medal.png')" style="width: 1.5vw; height: 1.5vw">
-                    <div class="fs-3 fw-bold">노래하는 박정빈</div>
+                    <div class="fs-3 fw-bold">{{state.data["memberName"]}}</div>
                 </div>
                 <div class="vh15 w-100 mx-4 my-4">
-                    <div class="w-100 vh5 d-sm-flex justify-content-center">
-                        <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">직무</div>
-                        <div class="w-75 text-center fs-5 fw-bold">백엔드 개발자</div>
-                    </div>
+
                     <div class="w-100 vh5 d-sm-flex justify-content-center">
                         <div class="w-25 text-center fs-5 fw-bold" style="color: #666666">관심분야</div>
                         <div class="w-75 text-center fs-5 fw-bold">Java, Spring, JPA</div>
@@ -30,8 +27,8 @@
                 </div>
                 <div class="w-100 vh10 mt-4 d-sm-flex justify-content-end align-items-center">
                     <div class="w-100 d-sm-flex justify-content-center">
-                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem">게시글 작성하기</button>
-                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem"  @click="submitLoginInfo()">프로필 더보기</button>
+                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem" @click="$router.push('/create-post')">게시글 작성하기</button>
+                        <button class="mx-3 vh5 fw-bold" style="border: none; background-color: #D9D9D9; border-radius: 5px; width: 7vw; font-size: 1.1rem" >프로필 더보기</button>
                     </div>
 
                 </div>
@@ -76,10 +73,14 @@
 
 import {reactive} from "vue";
 import axios from "axios";
-import router from "@/router/router";
 
 export default {
   name: 'Profilebar',
+  data(){
+    return{
+
+    }
+  },
   setup() {
     const state = reactive({
       form: {
@@ -93,27 +94,18 @@ export default {
       auth: "",
     })
 
-    const submitLoginInfo = () => {
-      axios.post("/api/v1/login/profile").then((res) => {
-        state.statusCode = res.data["statusCode"];
-        state.msg = res.data["msg"];
-        state.data = res.data["data"];
-        console.log(state.statusCode)
-        console.log(state.msg);
-        console.log(state.data);
+  axios.post("/api/v1/main/profilebar").then((res) => {
+    state.statusCode = res.data["statusCode"];
+    state.msg = res.data["msg"];
+    state.data = res.data["data"];
+    console.log(state.statusCode)
+    console.log(state.msg);
+    console.log(state.data);
+  })
 
-        // 로그인 정보가 조건에 맞으면
-        if (state.statusCode == "0000") {
-          router.push("/profile");
-        } else {
-          router.push("/");
-        }
-
-      })
-    }
-
-    return {state, submitLoginInfo}
+    return {state}
   },
+
 }
 </script>
 

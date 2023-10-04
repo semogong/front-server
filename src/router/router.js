@@ -11,6 +11,7 @@ import Main from "@/views/mains/Main.vue";
 import EditPost from "@/views/posts/EditPost.vue";
 import Post from "@/views/posts/Post.vue";
 import Profile from "@/views/profiles/Profile.vue";
+import createPost from "@/views/posts/CreatePost";
 
 
 const routes = [
@@ -53,6 +54,9 @@ const routes = [
                 path:'edit',
                 component:EditPost
             }]
+        },{
+            path: 'create-post', // Main 하위의 새로운 라우트
+            component: createPost
         }
         ]
     },
